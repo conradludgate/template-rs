@@ -106,3 +106,10 @@ If there is a `#`, the next `ident` or `group` token is taken as a variable for 
 If the token is an ident, then the type should implement `TryInto<TemplateValue>`.
 If the token is a group, then it should resolve to a single expression which also implements `TryInto<TemplateValue>`.
 
+If you want to include a `#` in the output, just prepend it with another `#`.
+*   `##foo` => `#foo`
+*   `###` => `##`
+*   `##{}` => `#{}`
+
+`TryInto<TemplateValue>` is implemented for most built in types,
+as well as types that implement `Template`. That means you can compose templates.
